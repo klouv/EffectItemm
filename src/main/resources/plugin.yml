@@ -1,0 +1,5 @@
+name: KlouvEffectItem
+main: klouvEffectItem.KlouvEffectItem
+version: 1.0
+commands:
+  itemver: {}

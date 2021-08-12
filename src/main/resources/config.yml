@@ -1,0 +1,11 @@
+item-1:
+  effects:
+    effect-1:
+      type: REGENERATION
+      duration:  60
+      amplifier: 2
+      particles: true
+      ambient: true
+  item:
+    material: MILK_BUCKET
+    name: "Özel süt"
