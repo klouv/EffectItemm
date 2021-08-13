@@ -26,9 +26,16 @@ public class EffectListener implements Listener {
         Player player = event.getPlayer();
         String id = item.getString("id");
 
+        player.sendMessage("id: " + id);
+        player.sendMessage("içme testi başarılı");
+
         List<PotionEffect> effects = map.get(id).effect();
 
-        //player.addPotionEffect();//burayı yap
+        for (int i=0; i<= effects.toArray().length; i++ ) {
+            PotionEffect effect = effects.get(i);
+            player.addPotionEffect(effect);
+        }
+
     }
 
 }

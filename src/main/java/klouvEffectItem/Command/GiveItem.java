@@ -24,11 +24,20 @@ public class GiveItem implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) return true;
-        if (args.length != 1) return true;
+        if (args.length != 1){
+            if (args.length != 0) return true;
+            Player player = (Player) sender;
+
+            map.forEach((k,l) -> {
+                player.sendMessage("id: " + k);
+            } );
+
+            return true;
+        }
 
         Player player = (Player) sender;
-        KlouvItem Kitem= map.get(args[0]);
-        ItemStack item = map.get(Kitem).item();
+        KlouvItem Kitem = map.get(args[0]);
+        ItemStack item = Kitem.item();
 
         player.getInventory().addItem(item);
         player.sendMessage("item başarıyla envanterinize eklendi");

@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,8 +37,14 @@ public class KlouvEffectItem extends JavaPlugin implements Listener {
             ConfigurationSection effects = section.getConfigurationSection("effects");
 
             for (String Key: effects.getKeys(false)) {
-                //list.add();//burayı doldur
+                ConfigurationSection effectsSection = effects.getConfigurationSection(Key);
+                int duration = effectsSection.getInt("duration");
+                int amplifier = effectsSection.getInt("amplifier");
+                String name = effectsSection.getString("type");
+                Boolean ambient = effectsSection.getBoolean("ambient");
+                Boolean particles = effectsSection.getBoolean("particles");
 
+                list.add(new PotionEffect(PotionEffectType.getByName(name),duration,amplifier,ambient,particles));
             }
             KlouvItem Kitem = new KlouvItem(key, item, list);
             map.put(key, Kitem);
